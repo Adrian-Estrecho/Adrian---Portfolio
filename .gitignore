@@ -5,3 +5,6 @@ dist
 .backups
 .vercel
 .env*
+
+.vercel
+.env*
