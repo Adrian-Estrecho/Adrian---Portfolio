@@ -1,0 +1,183 @@
+/* The resume stays plain on purpose: one column, black text, and a system font
+   that every PDF reader and hiring system can read. */
+:root {
+  --ink: #111318;
+  --soft: #41454d;
+  --rule: #b9bdc5;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #e6e8ec;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1.34;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #0b4fc4;
+  outline-offset: 2px;
+}
+
+/* ---------- Screen only ---------- */
+.r-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  width: min(100%, 210mm);
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+
+.r-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.r-action:hover {
+  border-color: #0b4fc4;
+}
+
+.r-action--main {
+  border-color: #0b4fc4;
+  background: #0b4fc4;
+  color: #fff;
+}
+
+.r-action--main:hover {
+  background: #083c97;
+}
+
+.r-note {
+  width: min(100% - 32px, 210mm - 32px);
+  margin: 0 auto 12px;
+  padding: 8px 12px;
+  border: 1px dashed var(--soft);
+  border-radius: 8px;
+  font-family: Consolas, ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+
+/* ---------- The page ---------- */
+.r-sheet {
+  width: min(100%, 210mm);
+  margin: 0 auto 32px;
+  padding: 13mm 15mm;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(17, 19, 24, 0.14);
+}
+
+.r-name {
+  font-size: 21pt;
+  line-height: 1.1;
+}
+
+.r-headline {
+  margin-top: 2px;
+  font-size: 11.5pt;
+}
+
+.r-contact {
+  margin-top: 2px;
+  color: var(--soft);
+}
+
+.r-section {
+  margin-top: 11pt;
+}
+
+.r-heading {
+  margin-bottom: 4pt;
+  padding-bottom: 2pt;
+  border-bottom: 1px solid var(--rule);
+  font-size: 11pt;
+}
+
+.r-entry {
+  break-inside: avoid;
+}
+
+.r-entry + .r-entry {
+  margin-top: 6pt;
+}
+
+.r-entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 16px;
+}
+
+.r-entry-title {
+  font-size: 10pt;
+}
+
+.r-entry-meta {
+  color: var(--soft);
+}
+
+.r-points {
+  padding-left: 14pt;
+}
+
+@media (max-width: 800px) {
+  .r-sheet {
+    margin-bottom: 0;
+    padding: 20px 16px 32px;
+    box-shadow: none;
+  }
+}
+
+/* ---------- Print and PDF ---------- */
+@page {
+  size: A4;
+  margin: 12mm 15mm;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .r-toolbar,
+  .r-note {
+    display: none;
+  }
+
+  .r-sheet {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
